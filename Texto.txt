@@ -2,4 +2,7 @@ Hola, mi nombre es Carlos
 Tengo 17 años
 Vivo en El Salvador
 Un nuevo amigo encontré
+
+Master 1
+
 Y soy yo
