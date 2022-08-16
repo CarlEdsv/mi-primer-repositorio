@@ -1,0 +1,98 @@
+Comandos importantes de git:
+git init: inicia git en una carpeta
+
+git add "nombre del archivo": agrega un archivo al staging area (Ram) para ser trackeado(rastreado) y posteriormente ser enviado al repositorio haciendo commit
+
+git status: registra el estado del repositorio
+
+git --global user.name "nombre": agrega un nombre de usuario a git
+
+git --global user.email "correo@gmail.com": agrega un correo a git
+
+git commit -m "mensaje": agrega los cambios al repositorio, y deja un mensaje
+
+git rm --cached: elimina el archivo del staging area (ram)
+
+git log : muestra la historia de cambios sobre el proyecto
+
+"git log --oneline --graph --decorate --all" (arbolito): Toda la historia del proyecto, más bonito y ordenado.
+
+git show: muestra el último cambio hecho sobre el archivo con la versión más reciente
+
+gi diff "número del commit más reciente"  "número del commit más antiguo"(no significa que solo puedes comparar el más reciente con el más nuevo, sino que se debe colocar el que sea el más reciente al principio): Compara dos versiones del archivo modificado. Si solo se coloca git diff, comparará lo que esté en el disco con lo que esté en el staging.
+
+git chekout: Podemos volver a cualquier versión anterior de un archivo específico o incluso del proyecto entero. Esta también es la forma de crear ramas y movernos entre ellas.
+
+git reset: En este caso, no solo “volvemos en el tiempo”, sino que borramos los cambios que hicimos después de este commit.
+
+Hay dos formas de usar git reset: con el argumento --hard, borrando toda la información que tengamos en el área de staging (y perdiendo todo para siempre). O, un poco más seguro, con el argumento --soft, que mantiene allí los archivos del área de staging para que podamos aplicar nuestros últimos cambios pero desde un commit anterior.
+
+git reset HEAD: se usa para sacar un archivo del staging, y que sus cambios no sean rastreados.
+
+
+git workflow: estándar para el manejo de ramas de git
+
+
+git branch: visualiza las ramas creadas
+git branch rama: crea una nueva rama
+git checkout rama: te permite moverte entre las ramas
+
+git  commit -am: hace la función de "add ." y "commit -m" a la vez. No funciona con archivos nuevos
+
+git merge: trae el último commit de otra rama a la rama que se encuentra acutalmente.
+
+git graph: extensión de vscode para ver graficamente las ramas de git
+
+git remote add origin url: crea un punto de origen para acceder al servidor remoto, en este caso de Github
+
+git remote set-url (origin) url: cambia la url del repositorio remoto de github, puede ser https o ssh.
+
+git remote -v: ver la url del repositorio, fetch y push
+
+ssh-keygen -t rsa -b 4096 -C "youremail@example.com": comando para crear llave ssh
+
+git rebase --abort: usar en caso de fallar el rebase
+
+git stash save "":deja un mensaje que identifique el stash
+git stash list: lista de los stash
+git stash pop stash@{<num_stash>}:coloca el stash de la posición deseada
+git stash branch <nombre_de_la_rama>: Crea una rama a la que le asigna el stash
+git stash drop stash@{<num_stash>}: elimina el stash específicado
+git stash clear: borra todos los elementos del stash
+git stash -u :que guardará en el stash los archivos que no estén en el staging
+
+NOTAS ###(
+    El cambio más reciente (al crear un stash) SIEMPRE recibe el valor 0 y los que estaban
+    antes aumentan su valor.
+
+Al crear un stash tomará los archivos que han sido modificados y eliminados. Para que tome
+un archivo creado es necesario agregarlo al Staging Area con git add [nombre_archivo] con
+la intención de que git tenga un seguimiento de ese archivo, o también utilizando el
+comando git stash -u (que guardará en el stash los archivos que no estén en el staging).
+
+Al aplicar un stash este no se elimina, es buena práctica eliminarlo.
+)
+
+git clean: borra todos los archivos nuevos que no estén trackeados por git
+git clean --dry-run: simulla que archivos serían borrados usando git clean
+git clean -df: borra archivos y CARPETAS (d)
+
+git cherry-pick <hash del commit>: te trae un commit específico de una rama
+git reflog: el salva vidas de los programadores, git reflog nunca olvida.
+Usar git reset --hard
+
+git --amend: Remienda el último commit y lo junta con lo que se tenga en staging
+
+git grep -n <palabra>: muestra en que archivos y líneas se usó dicha palabra
+git grep -c <palabra>: muestra cuantas veces aparece en los archivos del proyecto
+git log -S <palabra>: muestra cuantas veces se usó en un commit
+
+git shortlog -sn --all --no-merge: muestra cuantos commit ha hecho cada miembro,
+quitando los eliminados sin los merges
+git blame ARCHIVO: muestra quien hizo cada cosa línea por línea. (-Llinea1,linea2)
+git branch -r: se muestran todas las ramas remotas.
+git branch -a: se muestran todas las ramas, tanto locales como remotas.
+git config --global alias.nombre_alias "codigo_alias": para crear un alias de git
+
+code ~/.bash_profile: carpeta para crear aliases
+alias arbolito = "linea de comandos para el alias"
